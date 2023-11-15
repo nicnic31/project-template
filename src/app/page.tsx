@@ -6,6 +6,6 @@ import TextArea from "@/components/ui/textArea";
 
 export default function Home() {
   return (
-    <TextArea label="Label 1" field="label1"/>
+    <TextArea field="label1"/>
   );
 }
