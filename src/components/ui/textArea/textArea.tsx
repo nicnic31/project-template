@@ -21,6 +21,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, ITextAreaProps>(
       value,
       rows,
       className,
+      onChange,
       ...textAreaProps
     },
     ref
@@ -37,7 +38,9 @@ const TextArea = forwardRef<HTMLTextAreaElement, ITextAreaProps>(
             id={field}
             name={field}
             rows={rows}
-            placeholder="Enter your message..."
+            placeholder={placeholder}
+            onChange={onChange}
+            ref={ref}
             className={cn(
               "p-3 w-full rounded outline-0 focus:border-2",
               helperText
@@ -46,7 +49,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, ITextAreaProps>(
               textSizes(textSize),
               className
             )}
-            ref={ref}
             {...textAreaProps}
           >
             {value}
