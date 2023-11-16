@@ -10,18 +10,15 @@ export interface IInputProps
   textSize?: TextSizeName;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
-  helperText?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, IInputProps>(
   (
     {
-      variant = "filled",
+      variant = "outlined",
       textSize = "medium",
       startIcon,
       endIcon,
-      helperText,
-      onChange,
       className,
       ...inputProps
     },
@@ -32,7 +29,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
         {startIcon && <div className="absolute top-4 left-4">{startIcon}</div>}
         <input
           className={cn(
-            "py-3 text-black focus:outline-0 w-full",
+            "py-3 text-black border-gray focus:outline-0 focus:border-dark-gray w-full",
             variant === "outlined"
               ? "rounded border focus:border-2"
               : "rounded-t border-b focus:border-b-2",
@@ -41,20 +38,11 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
             endIcon && "pl-3 pr-12",
             startIcon && "pl-12 pr-3",
             !endIcon && !startIcon && "px-3",
-            helperText
-              ? "border-dark-red focus:border-dark-red"
-              : " border-gray focus:border-dark-gray",
             className
           )}
-          onChange={onChange}
-          ref={ref}
           {...inputProps}
+          ref={ref}
         />
-        {helperText && (
-          <p className="text-red text-xs tracking-wide font-medium">
-            {helperText}
-          </p>
-        )}
         {endIcon && <div className="absolute top-4 right-5">{endIcon}</div>}
       </div>
     );
