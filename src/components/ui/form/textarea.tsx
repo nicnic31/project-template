@@ -36,7 +36,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>(
       helperText,
       className,
       size = "medium",
-      variant = "standard",
+      variant = "outlined",
       characterCount = 0,
       minCharacterCount = 0,
       disabled = false,
@@ -72,12 +72,12 @@ const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>(
             maxLength={maxLength}
             rows={1}
             className={cn(
-              "bg-transparent focus-visible:ring-[0px] disabled:text-typography-disabled placeholder:text-secondary-100 placeholder:font-light",
+              "bg-transparent disabled:text-typography-disabled placeholder:text-secondary-100 placeholder:font-light",
               variant === "outlined"
-                ? "border-secondary-100 focus-visible:border-2 focus-visible:border-primary disabled:border-typography-disabled disabled:opacity-100"
+                ? "border-secondary-100 focus-visible:ring-[2px] focus-visible:ring-primary focus-visible:border-0 disabled:border-typography-disabled disabled:opacity-100"
                 : "border-0 shadow-none",
 
-              error && "border border-error",
+              error && "ring-2 ring-error border-0",
               fontsizes[size],
               className
             )}
